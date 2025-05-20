@@ -96,9 +96,9 @@
     <form id="loginForm" class="active" action="${pageContext.request.contextPath}/onlineStoreLogin" method="post">
       <input type="hidden" name="action" value="login" />
       <label for="loginUsername">Username</label>
-      <input type="text" name="username" id="loginUsername" required />
+      <input type="text" name="username" id="loginUsername" value="akila" required />
       <label for="loginPassword">Password</label>
-      <input type="password" name="password" id="loginPassword" required />
+      <input type="password" name="password" id="loginPassword" value="123" required />
       <input type="submit" value="Login" />
     </form>
 

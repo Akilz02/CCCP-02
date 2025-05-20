@@ -27,7 +27,8 @@ public class AddToCartServlet extends HttpServlet {
         String quantityStr = request.getParameter("quantity");
 
         if (username == null) {
-            response.sendRedirect("login");
+//            request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/onineStoreLogin");
             return;
         }
 

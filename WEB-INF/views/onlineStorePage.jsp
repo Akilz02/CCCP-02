@@ -113,12 +113,18 @@
     </tbody>
   </table>
 
+  <form action="${pageContext.request.contextPath}/onlineStore" method="post">
+    <input type="hidden" name="action" value="logout" />
+    <input type="submit" value="Log Out" />
+  </form>
+
+
   <!-- Action Buttons -->
   <ul>
     <li><a href="${pageContext.request.contextPath}/addToCart">Add to Cart</a></li>
     <li><a href="${pageContext.request.contextPath}/viewCart">View Cart</a></li>
     <li><a href="${pageContext.request.contextPath}/checkout">Checkout</a></li>
-    <li><a href="${pageContext.request.contextPath}/onlineStore" class="logout">Logout</a></li>
+
   </ul>
 </div>
 

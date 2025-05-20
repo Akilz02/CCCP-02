@@ -18,6 +18,14 @@ public class OnlineStorePageServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/views/onlineStorePage.jsp").forward(request, response);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (("logout").equals(request.getParameter("action"))) {
+            request.getSession().invalidate();
+            request.getRequestDispatcher("/WEB-INF/views/onlineStoreLogin.jsp").forward(request, response);
+        }
+    }
+
     private List<Map<String, Object>> getItems() {
         List<Map<String, Object>> items = new ArrayList<>();
         try {

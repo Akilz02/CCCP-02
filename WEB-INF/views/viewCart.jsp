@@ -51,10 +51,11 @@
     </thead>
     <tbody>
       <!-- Dynamic rows from backend -->
-      <c:forEach var="item" items="${items}">
+      <c:forEach var="item" items="${cartItems}">
         <tr>
           <td>${item.itemId}</td>
           <td>${item.itemName}</td>
+            <td>${item.quantity}</td>
           <td>LKR ${item.unitPrice}</td>
         </tr>
       </c:forEach>

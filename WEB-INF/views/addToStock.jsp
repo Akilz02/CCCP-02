@@ -52,7 +52,7 @@
 </head>
 <body>
   <h2>Add Batch to Stock</h2>
-  <form action="addToStock.jsp" method="post">
+  <form action="${pageContext.request.contextPath}/addToStock" method="post">
     <label>Item ID</label>
     <input type="text" name="itemId" required />
 
