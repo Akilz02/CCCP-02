@@ -39,7 +39,7 @@
 </head>
 <body>
   <h2>Move Available Stock to Shelf Automatically</h2>
-  <form action="moveToShelf.jsp" method="post">
+  <form action="${pageContext.request.contextPath}/moveToShelf" method="post">
     <input type="submit" value="Execute Move Operation" />
   </form>
   <a href="${pageContext.request.contextPath}/cashier">Back to Menu</a>

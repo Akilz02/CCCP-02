@@ -50,12 +50,12 @@
 </head>
 <body>
   <h2>Create New Shelf</h2>
-  <form action="createShelf.jsp" method="post">
+  <form action="${pageContext.request.contextPath}/createShelf" method="post">
     <label>Shelf ID</label>
-    <input type="text" name="shelfId" required />
+    <input type="text" name="shelfId" id="shelfID" required />
 
     <label>Capacity</label>
-    <input type="number" name="capacity" min="1" required />
+    <input type="number" name="shelfCapacity" id="shelfCapacity" min="1" required />
 
     <input type="submit" value="Create Shelf" />
   </form>

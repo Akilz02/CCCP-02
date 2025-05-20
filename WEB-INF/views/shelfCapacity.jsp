@@ -48,21 +48,42 @@
       margin-top: 20px;
     }
   </style>
-</head>
-<body>
-  <h2>Set Shelf Item Capacity</h2>
-  <form action="shelfCapacity.jsp" method="post">
-    <label>Shelf ID</label>
-    <input type="text" name="shelfId" required />
+  <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <head>
+    <title>Shelf Item Capacity</title>
+    <style>
+      .error { color: red; }
+      .success { color: green; }
+    </style>
+  </head>
+  <body>
+  <h2>Shelf Item Capacity</h2>
 
-    <label>Item ID</label>
-    <input type="text" name="itemId" required />
+  <c:if test="${not empty error}">
+    <div class="error">${error}</div>
+  </c:if>
 
-    <label>Capacity Limit</label>
-    <input type="number" name="capacity" min="1" required />
+  <c:if test="${not empty success}">
+    <div class="success">${success}</div>
+  </c:if>
 
-    <input type="submit" value="Set Capacity" />
+  <form method="post" action="shelfCapacity">
+    <div>
+      <label for="shelfId">Shelf ID:</label>
+      <input type="text" id="shelfId" name="shelfId" required>
+    </div>
+    <div>
+      <label for="itemId">Item ID:</label>
+      <input type="text" id="itemId" name="itemId" required>
+    </div>
+    <div>
+      <label for="capacityLimit">Capacity Limit:</label>
+      <input type="number" id="capacityLimit" name="capacityLimit" required min="1">
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
   </form>
-  <a href="${pageContext.request.contextPath}/cashier">Back to Menu</a>
-</body>
-</html>
+  </body>
+  </html>

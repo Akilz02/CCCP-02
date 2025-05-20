@@ -65,6 +65,7 @@ public class CustomerBillingServlet extends HttpServlet {
         doGet(request, response);
     }
 
+    @SuppressWarnings("unchecked")
     private List<BillItem> getBill(HttpServletRequest request) {
         HttpSession session = request.getSession();
         List<BillItem> bill = (List<BillItem>) session.getAttribute("bill");

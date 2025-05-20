@@ -24,14 +24,16 @@ public class CreateShelfServlet extends HttpServlet {
         String shelfCapacityStr = request.getParameter("shelfCapacity");
 
         int shelfCapacity = 0;
-        try {
-            shelfCapacity = Integer.parseInt(shelfCapacityStr);
-        } catch (NumberFormatException e) {
-            // handle error, e.g., set error attribute and forward back to JSP
-            request.setAttribute("error", "Invalid capacity value.");
-            doGet(request, response);
-            return;
-        }
+        shelfCapacity = Integer.parseInt(shelfCapacityStr);
+
+//        try {
+//            shelfCapacity = Integer.parseInt(shelfCapacityStr);
+//        } catch (NumberFormatException e) {
+//            // handle error, e.g., set error attribute and forward back to JSP
+//            request.setAttribute("error", "Invalid capacity value.");
+//            doGet(request, response);
+//            return;
+//        }
 
         try {
             saveShelf(shelfId, shelfCapacity);
@@ -43,12 +45,17 @@ public class CreateShelfServlet extends HttpServlet {
     }
 
     public static void saveShelf(String shelfId, int capacity) throws SQLException {
-        Connection connection = DatabaseConnection.getInstance().getConnection();
-        String query = "INSERT INTO shelf (shelf_id, capacity) VALUES (?, ?)";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, shelfId);
-            preparedStatement.setInt(2, capacity);
-            preparedStatement.executeUpdate();
+        try {
+            Connection connection = DatabaseConnection.getInstance().getConnection();
+            String query = "INSERT INTO shelf (shelf_id, capacity) VALUES (?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, shelfId);
+                preparedStatement.setInt(2, capacity);
+                preparedStatement.executeUpdate();
+            }
+            connection.close();
+        } catch (SQLException e) {
+        e.printStackTrace();
         }
     }
 }
