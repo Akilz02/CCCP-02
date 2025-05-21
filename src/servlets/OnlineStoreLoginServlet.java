@@ -31,6 +31,7 @@ public class OnlineStoreLoginServlet extends HttpServlet {
             String password = request.getParameter("password");
             try {
                 register(username, password);
+                doGet(request, response);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
