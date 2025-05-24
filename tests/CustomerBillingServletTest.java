@@ -61,8 +61,37 @@ public class CustomerBillingServletTest {
         verify(request).setAttribute(eq("error"), contains("Invalid quantity"));
         verify(dispatcher).forward(request, response);
     }
+    @Test
+    public void testDoPost_WithValidInput_AddsItemToBill() throws ServletException, IOException {
+        when(request.getParameter("itemId")).thenReturn("I001");
+        when(request.getParameter("batchId")).thenReturn("B001");
+        when(request.getParameter("quantity")).thenReturn("2");
 
-    // More realistic test cases require mocking the DatabaseConnection and ResultSet,
-    // which involves further abstraction or mocking static/singleton methods (advanced)
+        when(request.getRequestDispatcher("/WEB-INF/views/customerBilling.jsp")).thenReturn(dispatcher);
+        when(request.getSession()).thenReturn(session);
+        ArrayList<CustomerBillingServlet.BillItem> bill = new ArrayList<>();
+        when(session.getAttribute("bill")).thenReturn(bill);
+
+        servlet.doPost(request, response);
+
+        verify(session).setAttribute(eq("bill"), any(ArrayList.class));
+        verify(dispatcher).forward(request, response);
+    }
+
+    @Test
+    public void testDoPost_WithNonExistentItem_ShowsError() throws ServletException, IOException {
+        when(request.getParameter("itemId")).thenReturn("I999"); // Non-existent item
+        when(request.getParameter("batchId")).thenReturn("B001");
+        when(request.getParameter("quantity")).thenReturn("2");
+
+        when(request.getRequestDispatcher("/WEB-INF/views/customerBilling.jsp")).thenReturn(dispatcher);
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("bill")).thenReturn(new ArrayList<>());
+
+        servlet.doPost(request, response);
+
+        verify(request).setAttribute(eq("error"), contains("Item not found"));
+        verify(dispatcher).forward(request, response);
+    }
 
 }

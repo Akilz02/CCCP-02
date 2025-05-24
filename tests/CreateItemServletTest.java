@@ -59,4 +59,14 @@ public class CreateItemServletTest {
             assert(e instanceof SQLException || e.getCause() instanceof SQLException);
         }
     }
+
+    @Test
+    public void testNewAddItemToStock_ThrowsException() {
+        try {
+            CreateItemServlet.NewAddItemToStock("IT001", null);
+        } catch (Exception e) {
+            assert(e instanceof SQLException || e.getCause() instanceof SQLException);
+        }
+    }
+
 }
