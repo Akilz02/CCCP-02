@@ -12,12 +12,12 @@ import java.sql.*;
 public class MoveToShelfServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/views/moveToShelf.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             moveStockToShelf();
             request.setAttribute("success", "Stock moved to shelf successfully.");
@@ -124,4 +124,5 @@ public class MoveToShelfServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+
 }

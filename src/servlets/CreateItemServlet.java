@@ -24,7 +24,7 @@ public class CreateItemServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String itemName = request.getParameter("itemName");
         String itemId = request.getParameter("itemId");
 

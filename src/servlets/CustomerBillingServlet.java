@@ -59,7 +59,7 @@ public class CustomerBillingServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Load items from temp_bill to ensure consistency
         loadTempBillItems(request);
 //        getBill(request);
@@ -80,7 +80,7 @@ public class CustomerBillingServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String itemId = request.getParameter("itemId");
             String batchId = request.getParameter("batchId");

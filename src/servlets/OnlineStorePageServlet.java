@@ -12,14 +12,14 @@ import java.util.*;
 @WebServlet("/onlineStore")
 public class OnlineStorePageServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Map<String, Object>> items = getItems();
         request.setAttribute("items", items);
         request.getRequestDispatcher("/WEB-INF/views/onlineStorePage.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (("logout").equals(request.getParameter("action"))) {
             request.getSession().invalidate();
             request.getRequestDispatcher("/WEB-INF/views/onlineStoreLogin.jsp").forward(request, response);

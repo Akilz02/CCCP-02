@@ -17,7 +17,7 @@ public class AddToStockServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String itemId = request.getParameter("itemId");
         String batchId = request.getParameter("batchId");
         String quantityStr = request.getParameter("quantity");
